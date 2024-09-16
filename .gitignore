@@ -1,6 +1,7 @@
 .project
 .classpath
 .settings
+.vscode
 build
 target
 release.properties
