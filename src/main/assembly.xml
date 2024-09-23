@@ -1,0 +1,72 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+  
+
+	<id>${project.artifactId}</id>
+	<baseDirectory>${project.artifactId}</baseDirectory>
+
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<files>
+		<file>
+			<source>src/main/resources/version.xml</source>
+			<outputDirectory>pentaho-cpython-plugin</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<file>
+			<source>src/main/resources/pylogo.png</source>
+			<outputDirectory>pentaho-cpython-plugin</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<file>
+			<source>src/main/resources/pylogo.svg</source>
+			<outputDirectory>pentaho-cpython-plugin</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+	</files>
+
+	<fileSets>
+		<fileSet>
+			<includes>
+				<include>LICENSE.txt</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>target/lib</directory>
+			<outputDirectory>pentaho-cpython-plugin/lib</outputDirectory>
+			<includes>
+				<include>opencsv-${opencsv.version}.jar</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>pentaho-cpython-plugin</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+				<include>version.xml</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+
+	<dependencySets>
+		<dependencySet>
+			<useProjectArtifact>false</useProjectArtifact>
+			<outputDirectory>pentaho-cpython-plugin</outputDirectory>
+			<includes>
+				<include>pentaho:pentaho-cpython-plugin:jar</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
+			<useProjectArtifact>false</useProjectArtifact>
+			<outputDirectory>pentaho-cpython-plugin/lib/</outputDirectory>
+			<scope>runtime</scope>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<excludes>
+
+			</excludes>
+		</dependencySet>
+	</dependencySets>
+</assembly>
